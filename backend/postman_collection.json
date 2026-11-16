@@ -1,0 +1,200 @@
+{
+  "info": {
+    "_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "name": "API Data Mahasiswa (PHP Backend)",
+    "description": "Koleksi request Postman untuk RESTful API Data Mahasiswa murni backend (PHP Native + MySQL PDO)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000/api",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Get All Mahasiswa",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/mahasiswa.php",
+          "host": ["{{base_url}}"],
+          "path": ["mahasiswa.php"]
+        },
+        "description": "Mengambil seluruh daftar data mahasiswa"
+      }
+    },
+    {
+      "name": "2. Search Mahasiswa",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/mahasiswa.php?search=Informatika",
+          "host": ["{{base_url}}"],
+          "path": ["mahasiswa.php"],
+          "query": [
+            {
+              "key": "search",
+              "value": "Informatika",
+              "description": "Pencarian berdasarkan nama, nim, atau jurusan"
+            }
+          ]
+        },
+        "description": "Mencari mahasiswa berdasarkan kata kunci"
+      }
+    },
+    {
+      "name": "3. Get Mahasiswa by ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/mahasiswa.php?id=1",
+          "host": ["{{base_url}}"],
+          "path": ["mahasiswa.php"],
+          "query": [
+            {
+              "key": "id",
+              "value": "1"
+            }
+          ]
+        },
+        "description": "Mengambil data detail 1 mahasiswa berdasarkan ID"
+      }
+    },
+    {
+      "name": "4. Get Mahasiswa by NIM",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/mahasiswa.php?nim=2024001",
+          "host": ["{{base_url}}"],
+          "path": ["mahasiswa.php"],
+          "query": [
+            {
+              "key": "nim",
+              "value": "2024001"
+            }
+          ]
+        },
+        "description": "Mengambil data mahasiswa berdasarkan NIM"
+      }
+    },
+    {
+      "name": "5. Create Mahasiswa (POST)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nim\": \"2024004\",\n  \"nama\": \"Citra Lestari\",\n  \"jurusan\": \"Teknik Informatika\",\n  \"email\": \"citra.lestari@kampus.ac.id\",\n  \"alamat\": \"Jl. Melati No. 15, Yogyakarta\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/mahasiswa.php",
+          "host": ["{{base_url}}"],
+          "path": ["mahasiswa.php"]
+        },
+        "description": "Menambahkan data mahasiswa baru"
+      }
+    },
+    {
+      "name": "6. Update Mahasiswa (PUT)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nim\": \"2024001\",\n  \"nama\": \"Ahmad Pratama, S.Kom\",\n  \"jurusan\": \"Teknik Informatika\",\n  \"email\": \"ahmad.pratama@kampus.ac.id\",\n  \"alamat\": \"Jl. Merdeka No. 10 (Updated), Jakarta\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/mahasiswa.php?id=1",
+          "host": ["{{base_url}}"],
+          "path": ["mahasiswa.php"],
+          "query": [
+            {
+              "key": "id",
+              "value": "1"
+            }
+          ]
+        },
+        "description": "Memperbarui data mahasiswa berdasarkan ID"
+      }
+    },
+    {
+      "name": "7. Delete Mahasiswa (DELETE)",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/mahasiswa.php?id=3",
+          "host": ["{{base_url}}"],
+          "path": ["mahasiswa.php"],
+          "query": [
+            {
+              "key": "id",
+              "value": "3"
+            }
+          ]
+        },
+        "description": "Menghapus data mahasiswa berdasarkan ID"
+      }
+    }
+  ]
+}
